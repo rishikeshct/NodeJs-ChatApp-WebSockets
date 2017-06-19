@@ -1,0 +1,19 @@
+Basically websockets are for Communication between client and server
+Biderectional
+Allow real time flow
+
+
+Imagine chat app,
+In chat app a person send a message from client to server and inturn server send the message to all other clients who all connected to the server via websockets.
+
+
+Socket.io
+
+we need to install socketio in both client and server side.
+we can establish socket connection between client and server.
+
+
+
+Broadcasting
+
+Every other clien should recieve message except the client which has sent.
