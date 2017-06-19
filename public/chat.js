@@ -11,6 +11,15 @@ var message = document.getElementById('message');
 
 //Event emit when someone clicks button
 
+function myFunction(){
+  console.log("not Typing");
+socket.emit('nottyping', handle.value);
+}
+
+socket.on('nottyping', function(data){
+    feedback.innerHTML = '<p><em></em></p>';
+});
+
 btn.addEventListener('click',function(){
 
   socket.emit('chat', {
@@ -18,7 +27,7 @@ btn.addEventListener('click',function(){
     handle: handle.value
 
   });
-
+message.value = "";
 });
 
 message.addEventListener('keypress', function(){

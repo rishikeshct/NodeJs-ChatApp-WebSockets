@@ -25,4 +25,7 @@ io.on('connection',function(socket){   //socket will be diff for every client
         socket.broadcast.emit('typing', data);
     });
 
+    socket.on('nottyping', function(data){
+        socket.broadcast.emit('nottyping', data);
+    });
 });
