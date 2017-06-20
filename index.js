@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var socket =  require('socket.io');
-
+var dbChat = require('./lib/chat-db');
 var server = app.listen(3000,function(){
     console.log('listening to the 3000 port');
 });
@@ -22,6 +22,7 @@ io.on('connection',function(socket){   //socket will be diff for every client
 function chatFunctionalities(socket){
   socket.on('chat' , function(data){
       console.log(data);
+      dbChat.saveInfo(data);
       io.sockets.emit('chat', data);
     });
 
