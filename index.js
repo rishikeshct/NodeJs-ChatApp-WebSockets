@@ -14,18 +14,23 @@ var io = socket(server); //socket.io to work on this server
 
 io.on('connection',function(socket){   //socket will be diff for every client
   console.log('made socket connection '+socket.id);
+  chatFunctionalities(socket);
 
-    socket.on('chat' , function(data){
-        console.log(data);
-        io.sockets.emit('chat', data);
-      });
-
-      // Handle typing event
-    socket.on('typing', function(data){
-        socket.broadcast.emit('typing', data);
-    });
-
-    socket.on('nottyping', function(data){
-        socket.broadcast.emit('nottyping', data);
-    });
 });
+
+
+function chatFunctionalities(socket){
+  socket.on('chat' , function(data){
+      console.log(data);
+      io.sockets.emit('chat', data);
+    });
+
+    // Handle typing event
+  socket.on('typing', function(data){
+      socket.broadcast.emit('typing', data);
+  });
+
+  socket.on('nottyping', function(data){
+      socket.broadcast.emit('nottyping', data);
+  });
+}
