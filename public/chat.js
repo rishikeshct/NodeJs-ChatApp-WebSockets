@@ -3,10 +3,10 @@
 var socket = io.connect('http://localhost:3000');
 
 
-var message = document.getElementById('message');
+var message = document.getElementById('message'),
       handle = document.getElementById('handle'),
       btn = document.getElementById('send'),
-      output = document.getElementById('output');
+      output = document.getElementById('output'),
       feedback = document.getElementById('feedback');
 
 //Event emit when someone clicks button
@@ -32,7 +32,7 @@ message.value = "";
 
 message.addEventListener('keypress', function(){
     socket.emit('typing', handle.value);
-})
+});
 
 socket.on('chat', function(data){
      feedback.innerHTML = '';
